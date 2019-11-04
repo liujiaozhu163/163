@@ -1,20 +1,19 @@
 <template>
   <div class="ranking container">
     <el-row :gutter="100" class='bor'>
-      <el-col :span="6" class="left">
-        <h4>云音乐特色榜</h4>
-        <ul v-for="(items,i) in list">
-          <li v-if="i<4" @click="getRanking(i)">
+      <el-col :span="7" class="left">
+        <ul>
+          <h4>云音乐特色榜</h4>
+          <li v-for="(items,i) in list" v-if="i<4" @click="getRanking(i)">
             <div><img :src="items.coverImgUrl" width="50"></div>
             <div class="ulDiv2">
               <p>{{items.name}}</p>
               <p class="p2">{{items.updateFrequency}}</p>
             </div>
           </li>
-        </ul>
-        <h4>全球媒体榜</h4>
-        <ul v-for="(items,i) in list">
-          <li v-if="i>4" @click="getRanking(i)">
+          <h4>全球媒体榜</h4>
+
+          <li v-for="(items,i) in list" v-if="i>4" @click="getRanking(i)">
             <div><img :src="items.coverImgUrl" width="50"></div>
             <div class="ulDiv2">
               <p>{{items.name}}</p>
@@ -25,8 +24,7 @@
       </el-col>
       <!-- 左end-->
       <!-- 右start-->
-      <el-col :span="18"
-        class="right">
+      <el-col :span="17" class="right">
         <el-row :gutter="40">
           <el-col :span="6">
             <img :src="coverImgUrl" class="rimg">
@@ -78,8 +76,7 @@
 </template>
 
 <script>
-
-export default {
+  export default {
     name: "topList",
     data() {
       return {
@@ -159,79 +156,85 @@ export default {
     border-right: 1px solid #909399;
     border-left: 1px solid #909399;
   }
-  
+
   .left {
     margin-top: 40px;
   }
-  
-  ul li {
+
+  ul {
+    padding-left: 0px;
+  }
+
+  li {
     display: flex;
     list-style-type: none;
-    text-align: left;
   }
-  
+h4{
+  margin: 30px 0;
+  font-weight: bold;
+}
   .ulDiv2 {
     margin: 0 10px;
   }
-  
+
   .p2,
   .lspan {
     color: #999999;
   }
-  
+
   .bg {
     background: #E3E3E3;
   }
-  
+
   .gdlb {
     margin-top: 30px;
     border-top: 2px solid red;
   }
-  
+
   .sbj {
     padding: 13px 0;
     margin-left: 30px;
   }
-  
+
   .right {
     border-left: 1px solid #909399;
     margin-top: 40px;
   }
-  
+
   .rimg {
     width: 180px;
     border: 1px solid #909399;
     padding: 3px;
-  
+
   }
-  
+
   .gao {
     border: 1px solid #909399
   }
-  
+
   .gao tr {
     height: 30px;
     line-height: 30px;
   }
-  
+
   .gao td {
     padding-right: 40px;
   }
-  
+
   .gao span {
     margin: 0 5px;
   }
-  
+
   .gao img {
     margin: 10px 0;
   }
-  
+
   .plus {
     border-left: 1px solid #2b659e;
     padding-left: 5px;
-  
+
   }
-  
+
   .size {
     font-size: 20px;
   }
