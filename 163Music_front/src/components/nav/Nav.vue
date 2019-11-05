@@ -8,13 +8,20 @@
    <router-link to="/artist">歌手</router-link>
    <router-link to="/album">新碟上架</router-link>
   </div>
+  <span>
+    <v-login></v-login>
+   </span>
 </template>
 
 <script>
 
   export default {
-    name:'nav'
+    name:'nav',
+    }
+  components:{
+    'v-login':Login
   }
+
 </script>
 
 <style>

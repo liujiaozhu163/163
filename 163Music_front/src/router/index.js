@@ -6,6 +6,7 @@ import Personalized from '@/components/personalized/Personalized'
 import Artist from '@/components/artist/Artist'
 import Album from '@/components/album/Album'
 import Dj from '@/components/dj/Dj'
+
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +40,7 @@ export default new Router({
       path: '/dj',
       name: 'dj',
       component: Dj
-    }
+    },
+   
   ]
 })
