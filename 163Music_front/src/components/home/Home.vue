@@ -1,20 +1,22 @@
 <template>
   <div>
-    Home
     <v-banner></v-banner>
-    <v-personalized></v-personalized>
+    <v-highquality></v-highquality>
+	<v-end></v-end>
   </div>
 </template>
 
 <script>
 
   import Banner from '@/components/banner/Banner.vue'
-  import Personalized from '@/components/personalized/Personalized.vue'
+  import Highquality from '@/components/home/Highquality.vue'
+	import End from '@/components/nav/End.vue'
   export default{
     name:'home',
     components:{
       'v-banner':Banner,
-      'v-personalized':Personalized
+      'v-highquality':Highquality,
+	  'v-end':End,
     }
   }
 </script>

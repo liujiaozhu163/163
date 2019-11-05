@@ -5,6 +5,11 @@ import App from './App'
 import router from './router' // 引入 路由器 插件
 import store from './store'// 引入 vuex 状态管理 插件
 import axios from 'axios' // // 引入 axios 请求数据 插件
+//引入bootstrap 框架
+import 'bootstrap/dist/css/bootstrap.css'
+//引入 jquery 
+import 'jquery/dist/jquery.js'
+
 import ElementUI from 'element-ui' // // 引入 elementUI 前端 插件
 import 'element-ui/lib/theme-chalk/index.css' // elementUI css样式
 Vue.use(ElementUI) // 在 vue 中使用 element 插件
