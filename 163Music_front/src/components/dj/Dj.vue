@@ -1,6 +1,6 @@
 <template>
   <div class="zhibodiantai">
-   <!-- 最上面的图表分类 -->
+   <!-- 最上面的图标分类 -->
     <div class="datu">
        <ul>
          <li class="mingzi" v-for="(items,index) in categories" v-if="index < 18" :key="index">
@@ -12,6 +12,13 @@
          </li>
        </ul>
     </div>
+	<!-- 放一个组件 就是跳转图标的详情  和分类-->
+	<!-- <v-abc v-if="false">
+		
+	</v-abc> -->
+	
+	
+	
 
   <div class="datu-tuijian">
     <!-- 推荐的节目 -->
@@ -52,7 +59,7 @@
     </div>
   </div>
 <!-- 电台推荐 -->
-   <div>
+   <!-- <div>
      <h4>{{tui}}</h4>
      <div>
        <ul>
@@ -63,7 +70,7 @@
          </li>
        </ul>
      </div>
-   </div>
+   </div> -->
   </div>
 </template>
 
@@ -117,14 +124,14 @@
               }).catch((e)=>{
                 console.log('获取电台信息失败')
               });
-                //电台推荐
-              this.$http.get('/dj/recommend',{
-                params:{},
-              }).then((req)=>{
-              this.djRadiosone = req.data.djRadios;
-              }).catch((e)=>{
-                console.log('获取电台推荐失败')
-              });
+              //   //电台推荐
+              // this.$http.get('/dj/recommend',{
+              //   params:{},
+              // }).then((req)=>{
+              // this.djRadiosone = req.data.djRadios;
+              // }).catch((e)=>{
+              //   console.log('获取电台推荐失败')
+              // });
               //推荐节目
               this.$http.get('/program/recommend',{
                 params:{},
@@ -150,7 +157,9 @@
     list-style: none;
   }
   .zhibodiantai{
-    width: 1000px;
+    width: 970px;
+	border: 1px solid #D9D9D9;
+	padding: 10px 30px;
     margin: auto;
   }
   .tuijian{
@@ -165,8 +174,9 @@
   }
   .datu{
     height: 260px;
-    /* overflow: hidden; */
+	width: 933px;
     display: flex;
+	margin: auto;
   }
 .datu-tuijian{
    display: flex;
@@ -175,7 +185,7 @@
 }
   .mingzi{
     float: left;
-    margin-left: 20px;
+    margin-left: 14px;
     list-style: none;
   }
   .li{
@@ -188,6 +198,7 @@
   }
   .geshi{
     width: 80px;
+	height: 70px;
     margin-top: 30px;
 
   }
@@ -209,7 +220,7 @@
     /* margin-right: 10px; */
   }
   .youbian{
-    margin-left: 70px;
+    margin-left: 50px;
   }
   .jiemutouxiang{
     width: 40px;

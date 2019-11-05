@@ -11,7 +11,7 @@
                    <el-image :src="program.coverUrl"></el-image>
                   </div>
 				  </el-col>
-                    <el-col :span="20" :push="1">
+                    <el-col :span="20" :push="2">
                       <div class="youbian">
 						  <div class="youbian1">
                         <span class="diantaijiemu">电台节目：</span>
@@ -27,7 +27,7 @@
       </el-row>
 	  </div>
       <div class="anniu">
-        <el-button size="medium" type="primary"><i class="el-icon-video-play">播放</i>（{{program.radio.subCount}}）</el-button>
+        <el-button size="medium" type="primary"><i class="el-icon-video-play">播放</i>（{{getshijian(program.radio.subCount)}}）</el-button>
         <el-button size="medium" type="info" plain><i class="el-icon-thumb"></i>（{{program.likedCount}}）</el-button>
         <el-button size="medium" type="info" plain><i class="el-icon-s-comment"></i>（{{program.commentCount}}）</el-button>
         <el-button size="medium" type="info" plain><i class="el-icon-share"></i>（{{program.shareCount}}）</el-button>
@@ -36,24 +36,18 @@
       <div>
         <span class="qinggan">{{program.radio.category}}</span>
         <span>{{program.radio.name}}</span>
-        <span class="chuangjian">{{program.createTime}}创建</span>
+        <span class="chuangjian">{{getTime(program.createTime)}}创建</span>
         <span class="chuangjian">播放:{{program.listenerCount}}次</span>
       </div>
       <div class="jieshao">
         介绍：<br>
         {{program.description}}
       </div>
+	 <!-- 歌曲的列表 -->
       <div class="liebiao biaotou">
-        <div class="liebiao1">节目包含的歌曲列表</div>
-         <!-- <el-table>
-              <el-table-column
-                prop="date"
-                v-for="(items,index) in songs" :key="index"
-                width="180">
-
-              {{items.name}}  {{items.mMusic.playTime}}
-              </el-table-column>
-            </el-table> -->
+		  
+        <div class="liebiao1" v-if="false">节目包含的歌曲列表</div>
+        
             <table width="100%" class="liebiao">
                 <tr height="30px" v-for="(items,index) in songs" :key="index">
                   <td width="30px" class="shuzi">
@@ -66,7 +60,7 @@
                      {{items.name}}
                   </td>
                   <td width="100px">
-                     {{items.mMusic.playTime}}
+                     {{getTimes(items.mMusic.playTime)}}
                   </td>
                   <td width="100px">
                     {{items.artists[0].name.substring(0,10)+"..."}}
@@ -92,6 +86,21 @@
       }
     },
     methods:{
+		getTimes(time){
+		   let now = new Date(time);
+			return ((now.getMinutes())>= 10 ? now.getMinutes() : '0' + now.getMinutes())+" : "+((now.getSeconds())>= 10 ? now.getSeconds() : '0' + now.getSeconds());
+		},
+		getshijian(time){
+			let now = new Date(time);
+			return ((now.getMinutes())>= 10 ? now.getMinutes() : '0' + now.getMinutes())+"分"+((now.getSeconds())>= 10 ? now.getSeconds() : '0' + now.getSeconds())+"秒";
+		},
+		//转化时间
+		getTime(t){
+			let now = new Date(t);
+			// return now.toLocaleString();//这个是将毫秒数转化成中国标准时间
+			return now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+		},
+		//获取数据
       getxingqing(){
         this.$http.get('/dj/program/detail',{
           params:{

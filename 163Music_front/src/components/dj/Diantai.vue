@@ -11,7 +11,7 @@
                    <el-image class="touxiang2" :src="djRadio.picUrl"></el-image>
                   </div>
 				  </el-col>
-                    <el-col :span="20" :push="1">
+                    <el-col :span="20" :push="3">
                       <div class="youbian">
 						  <div class="youbian1">
                         <span class="diantaijiemu">电台：</span>
@@ -62,10 +62,10 @@
 			          赞 {{items.likedCount}}
 			       </td> 
 			       <td width="100px">
-			         {{items.createTime}}
+			         {{ getTime( items.createTime )}}
 			       </td>
-			       <td width="170px">
-			         {{items.playTime}}
+			       <td width="120px">
+			         {{getshijian(items.mainSong.lMusic.playTime)}}
 			       </td>
 			     </tr>
 			 </table>
@@ -86,6 +86,15 @@
       }
     },
     methods:{
+		getshijian(time){
+			let now = new Date(time);
+			return ((now.getMinutes())>= 10 ? now.getMinutes() : '0' + now.getMinutes())+"："+((now.getSeconds())>= 10 ? now.getSeconds() : '0' + now.getSeconds());
+		},
+		getTime(t){
+			let now = new Date(t);
+			// return now.toLocaleString();
+			return now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+		},
       getdiantai(){
 		this.$http.get('/dj/detail',{
 		  params:{
