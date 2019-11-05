@@ -6,6 +6,8 @@ import Personalized from '@/components/personalized/Personalized'
 import Artist from '@/components/artist/Artist'
 import Album from '@/components/album/Album'
 import Dj from '@/components/dj/Dj'
+import Xiangqing from '@/components/dj/Xiangqing'
+import Diantai from '@/components/dj/Diantai'
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +41,16 @@ export default new Router({
       path: '/dj',
       name: 'dj',
       component: Dj
-    }
+    },
+		{
+		  path:'/xiangqing/:id',
+		  name:'xiangqing',
+		  component: Xiangqing
+		},
+		{
+		  path:'/diantai/:id',
+		  name:'diantai',
+		  component: Diantai
+		}
   ]
 })
