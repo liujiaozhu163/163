@@ -15,7 +15,7 @@
        </ul>
     </div>
 	<!-- 放一个组件 就是跳转图标的详情  和分类-->
-	<v-youxiu :id="id"></v-youxiu>
+	<v-youxiu :id="id"></v-youxiu> 
 	
 	
 	
@@ -130,10 +130,11 @@ import Youxiu from '@/components/dj/Youxiu.vue'
 	.datuFlex{
 		display: flex;
 		flex-wrap: wrap;
+		margin-top: 30px;
 	}
 	.datuItems{
 		width: 105px;
-		height: 120px;
+		height: 105px;
 		list-style-type: none;
 		justify-content: space-between;
 		text-align: center;

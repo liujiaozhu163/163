@@ -51,7 +51,7 @@
 
 <style>
 	.youxiu{
-		width: 980px;
+		width: 962px;
 		margin: auto;
 	}
 	.tupian{

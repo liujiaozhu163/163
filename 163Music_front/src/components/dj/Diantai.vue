@@ -10,7 +10,7 @@
                    <el-image class="touxiang2" :src="djRadio.picUrl"></el-image>
                   </div>
 				  </el-col>
-                    <el-col :span="20" :push="3">
+                    <el-col :span="20" :push="1">
                       <div class="youbian2">
 						  <div class="youbian1">
                         <span class="diantaijiemu">电台：</span>
@@ -18,7 +18,7 @@
 						 </div>
 						 <div class="xinxi">
 							 <el-image class="touxiang1" :src="djRadio.dj.avatarUrl"></el-image>
-							 <span class="mingzi">{{djRadio.nickname}}</span>
+							 <span class="mingzi">{{djRadio.dj.nickname}}</span>
 						
 						 </div>
 						 <div class="dingyue1">
@@ -42,7 +42,7 @@
       <div class="">
         <div class="jiemu11"><h3>节目列表</h3></div>
 		<div>
-			<table width="100%" class="liebiao">
+			<table width="100%" class="liebiao233">
 			     <tr height="30px" v-for="(items,index) in programs" :key="index">
 			       <td width="30px" class="shuzi">
 			         {{index+1}}
@@ -106,7 +106,6 @@
 		  },
 		}).then((req)=>{
 		this.programs = req.data.programs;
-		console.log(req)
 		}).catch((e)=>{
 		  console.log('获取电台节目失败')
 		});
@@ -131,7 +130,7 @@
     color: #C20C0C;
     margin-right: 30px;
   }
-    .liebiao{
+    .liebiao233{
       font-size: 12px;
       color: #333333;
 	  border: 1px solid #d9d9d9;
@@ -163,7 +162,7 @@
 	  }
 	  .youbian1{
 		  display: flex;
-		  margin-top: 20px;
+		  margin-top: 5px;
 		  margin-bottom: 20px;
 	  }
 	  .dingyue{
@@ -194,6 +193,8 @@
 		  display: inline-block;
 		  margin-left: 20px;
 		  margin-top: 10px;
+		  color: #0c73c2;
+		  font-size: 12px;
 	}
 	.xinxi{
 		  height: 40px;

@@ -13,7 +13,7 @@
                     <el-col :span="20" :push="2">
                       <div class="youbian">
 						  <div class="youbian1">
-                        <span class="diantaijiemu">电台节目：</span>
+                        <span class="diantaijiemu">电台节目</span>
 						<span>{{program.name}}</span>
 						 </div>
                         <i class="el-icon-s-opportunity"></i>{{program.radio.name}}
@@ -42,8 +42,12 @@
         {{program.description}}
       </div>
 	 <!-- 歌曲的列表 -->
-      <div class="liebiao biaotou">
-        <div class="liebiao1" v-if="">节目包含的歌曲列表</div>
+	 
+	 <div v-if="false">
+		 
+	 </div>
+      <div class="liebiao biaotou" v-else>
+        <div class="liebiao1" >节目包含的歌曲列表</div>
             <table width="100%" class="liebiao">
                 <tr height="30px" v-for="(items,index) in songs" :key="index">
                   <td width="30px" class="shuzi">
