@@ -2,20 +2,20 @@
   <div class="zhibodiantai">
    <!-- 最上面的图标分类 -->
     <div class="datu">
-       <ul>
-         <li class="mingzi" v-for="(items,index) in categories" v-if="index < 18" :key="index">
-           <div class="geshi" @click="getContent(items.id)">
+       <ul class="datuFlex">
+         <li class="datuItems" v-for="(items,index) in categories" v-if="index < 18" :key="index">
+			 <!-- <router-link :to="{name:'youxiu',params:{id:items.id}}"> -->
+           <div class="" @click="getYouxiu(items.id)">
              <el-image class="nihao" :src="items.picUWPUrl">
               </el-image>
-            <div class="juzhong">{{items.name}}</div>
+            <div class="">{{items.name}}</div>
            </div>
+		   <!-- </router-link> -->
          </li>
        </ul>
     </div>
 	<!-- 放一个组件 就是跳转图标的详情  和分类-->
-	<!-- <v-abc v-if="false">
-		
-	</v-abc> -->
+	<v-youxiu :id="id"></v-youxiu>
 	
 	
 	
@@ -30,11 +30,11 @@
                 <router-link :to="{name:'xiangqing',params:{id:items.radio.lastProgramId}}">
                 <div class="jiemutouxiang"><el-image :src="items.radio.picUrl">
                  </el-image></div>
-                <div class="tuijianwenzi">
+                <div class="tuijianwenzi ziyanse">
                   {{items.mainSong.name.substring(0,18)}}<br>
                   <p class="zuozhe">{{items.radio.name}}</p>
                 </div>
-                <div class="tag">{{items.radio.category}}</div>
+                <div class="tag ziyanse">{{items.radio.category}}</div>
                 </router-link>
               </div>
         <!-- </router-link> -->
@@ -48,37 +48,26 @@
 			 <router-link :to="{name:'diantai',params:{id:items.id}}">
            <div class="jiemutouxiang"><el-image :src="items.picUrl">
             </el-image></div>
-           <div class="tuijianwenzi">
+           <div class="tuijianwenzi ziyanse">
              {{items.rcmdtext}}<br>
              <p class="zuozhe">{{items.name}}</p>
            </div>
-           <div class="tag">{{items.category}}</div>
+           <div class="tag ziyanse">{{items.category}}</div>
             </router-link>
          </div>
        </div>
     </div>
   </div>
-<!-- 电台推荐 -->
-   <!-- <div>
-     <h4>{{tui}}</h4>
-     <div>
-       <ul>
-         <li  class="li" v-for="(items,index) in djRadiosone" :key="index">
-           <router-link :to="{name:'dianxiangqing',params:{id:items.id}}">
-             {{items.name}} ID:{{items.id}}
-           </router-link>
-         </li>
-       </ul>
-     </div>
-   </div> -->
   </div>
 </template>
 
 <script>
-
+import Youxiu from '@/components/dj/Youxiu.vue' 
   export default{
     name:'dj',
-
+    components:{
+    'v-youxiu':Youxiu
+    },
     data(){
       return{
         msg:'热门电台',
@@ -87,34 +76,22 @@
         categories:[],
         djRadios:[],
         djRadiosone:[],
-        programs:[]
+        programs:[],
+		id:''
       }
     },
     methods:{
-      getContent(id){
-        console.log(id);
-        this.$http.get('/login/status').then(data=>{
-          console.log('刷新成功');
-          this.$http.get('/login/status').then(req=>{
-            console,log(req);
-            console.log('OK');
-          }).catch(e=>{
-            console.log("登录状态不存在");
-          })
-        }).catch(e=>{
-          console.log('刷新失败');
-        });
-
-      },
+		
+		getYouxiu(id){
+			this.id = id;
+		},
         getdiantai(){
               //图片电台分类
-              this.$http.get('/dj/catelist',{
-                params:{},
-              }).then((req)=>{
+              this.$http.get('/dj/catelist').then((req)=>{
               this.categories = req.data.categories;
-              // console.log(req)
+			  this.id = this.categories[0].id
               }).catch((e)=>{
-                console.log('获取电台分类信息失败')
+                console.log('获取电台分类信息失败111')
               });
                 //热门电台
               this.$http.get('/dj/hot',{
@@ -122,16 +99,9 @@
               }).then((req)=>{
               this.djRadios = req.data.djRadios;
               }).catch((e)=>{
-                console.log('获取电台信息失败')
+                console.log('获取电台信息失败2222')
               });
-              //   //电台推荐
-              // this.$http.get('/dj/recommend',{
-              //   params:{},
-              // }).then((req)=>{
-              // this.djRadiosone = req.data.djRadios;
-              // }).catch((e)=>{
-              //   console.log('获取电台推荐失败')
-              // });
+             
               //推荐节目
               this.$http.get('/program/recommend',{
                 params:{},
@@ -151,11 +121,23 @@
 </script>
 
 <style>
-  .tuijianjiemu{
-    float: left;
-    width: 600px;
-    list-style: none;
-  }
+	
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	.datuFlex{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.datuItems{
+		width: 105px;
+		height: 120px;
+		list-style-type: none;
+		justify-content: space-between;
+		text-align: center;
+	}
   .zhibodiantai{
     width: 970px;
 	border: 1px solid #D9D9D9;
@@ -167,27 +149,20 @@
     height: 500px;
     margin: auto;
   }
-  .tupiao{
-    width: 40px;
-    height: 40px;
-    background-color: aqua;
-  }
   .datu{
-    height: 260px;
-	width: 933px;
+    height: auto;
+	width: 980px;
     display: flex;
-	margin: auto;
+	justify-content: space-between;
+	margin-left: 0px;
+	/* margin: auto; */
   }
 .datu-tuijian{
    display: flex;
    margin: auto;
+   margin-top: 30px;
 
 }
-  .mingzi{
-    float: left;
-    margin-left: 14px;
-    list-style: none;
-  }
   .li{
     list-style: none;
     }
@@ -195,15 +170,6 @@
     width: 50px;
     height: 50px;
     margin-left: 10px;
-  }
-  .geshi{
-    width: 80px;
-	height: 70px;
-    margin-top: 30px;
-
-  }
-  .juzhong{
-    text-align: center;
   }
   .jiemu{
     width: 440px;
@@ -215,12 +181,16 @@
     height: 500px;
     border: 1px solid #ccc;
     border-top: 2px solid #C20C0C;
-    margin-top: -10px;
+    margin-top: 10px;
     padding: 20px 10px;
-    /* margin-right: 10px; */
+	font-size: 12px;
+	color: #333333;
+  }
+  .ziyanse{
+	  color: #333333;
   }
   .youbian{
-    margin-left: 50px;
+    margin-left: 40px;
   }
   .jiemutouxiang{
     width: 40px;

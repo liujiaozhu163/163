@@ -1,7 +1,6 @@
 <template>
 
   <div class="xiangqing">
-   <!-- {{this.$route.params.id}} -->
    <div class="xiang1">
       <el-row :gutter="20">
           <el-col :span="20" :offset="0">
@@ -21,7 +20,6 @@
                         <el-button type="info" class="dingyue" plain><i class="el-icon-star-off">订阅</i>（{{program.radio.subCount}}）</el-button>
                       </div>
                     </el-col>
-
                 </el-row>
           </el-col>
       </el-row>
@@ -45,9 +43,7 @@
       </div>
 	 <!-- 歌曲的列表 -->
       <div class="liebiao biaotou">
-		  
-        <div class="liebiao1" v-if="false">节目包含的歌曲列表</div>
-        
+        <div class="liebiao1" v-if="">节目包含的歌曲列表</div>
             <table width="100%" class="liebiao">
                 <tr height="30px" v-for="(items,index) in songs" :key="index">
                   <td width="30px" class="shuzi">
@@ -71,7 +67,6 @@
                 </tr>
             </table>
       </div>
-   <!-- </div> -->
   </div>
 </template>
 
@@ -86,6 +81,7 @@
       }
     },
     methods:{
+		//转化分秒
 		getTimes(time){
 		   let now = new Date(time);
 			return ((now.getMinutes())>= 10 ? now.getMinutes() : '0' + now.getMinutes())+" : "+((now.getSeconds())>= 10 ? now.getSeconds() : '0' + now.getSeconds());
@@ -94,7 +90,7 @@
 			let now = new Date(time);
 			return ((now.getMinutes())>= 10 ? now.getMinutes() : '0' + now.getMinutes())+"分"+((now.getSeconds())>= 10 ? now.getSeconds() : '0' + now.getSeconds())+"秒";
 		},
-		//转化时间
+		//转化时间年月日
 		getTime(t){
 			let now = new Date(t);
 			// return now.toLocaleString();//这个是将毫秒数转化成中国标准时间

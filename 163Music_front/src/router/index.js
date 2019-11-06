@@ -8,6 +8,7 @@ import Album from '@/components/album/Album'
 import Dj from '@/components/dj/Dj'
 import Xiangqing from '@/components/dj/Xiangqing'
 import Diantai from '@/components/dj/Diantai'
+import Youxiu from '@/components/dj/Youxiu'
 Vue.use(Router)
 
 export default new Router({
@@ -51,6 +52,11 @@ export default new Router({
 		  path:'/diantai/:id',
 		  name:'diantai',
 		  component: Diantai
+		},
+		{
+		  path:'/dj/:id',
+		  name:'youxiu',
+		  component: Youxiu
 		}
   ]
 })

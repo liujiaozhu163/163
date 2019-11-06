@@ -1,7 +1,6 @@
 <template>
 
   <div class="xiangqing">
-   <!-- {{this.$route.params.id}} -->
   <div class="xiang1">
       <el-row :gutter="20">
           <el-col :span="20" :offset="0">
@@ -12,7 +11,7 @@
                   </div>
 				  </el-col>
                     <el-col :span="20" :push="3">
-                      <div class="youbian">
+                      <div class="youbian2">
 						  <div class="youbian1">
                         <span class="diantaijiemu">电台：</span>
 						<span>{{djRadio.name}}</span>
@@ -36,13 +35,12 @@
 						 </div>
                       </div>
                     </el-col>
-
                 </el-row>
           </el-col>
       </el-row>
 	  </div>
       <div class="">
-        <div><h3>节目列表</h3></div>
+        <div class="jiemu11"><h3>节目列表</h3></div>
 		<div>
 			<table width="100%" class="liebiao">
 			     <tr height="30px" v-for="(items,index) in programs" :key="index">
@@ -70,9 +68,7 @@
 			     </tr>
 			 </table>
 		</div>
-         
       </div> 
-   <!-- </div> -->
   </div>
 </template>
 
@@ -92,7 +88,6 @@
 		},
 		getTime(t){
 			let now = new Date(t);
-			// return now.toLocaleString();
 			return now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 		},
       getdiantai(){
@@ -102,8 +97,6 @@
 		  },
 		}).then((req)=>{
 		this.djRadio = req.data.djRadio;
-		// this.songs = req.data.program.songs;
-		// console.log(req)
 		}).catch((e)=>{
 		  console.log('获取电台详情失败')
 		});
@@ -113,13 +106,10 @@
 		  },
 		}).then((req)=>{
 		this.programs = req.data.programs;
-		// this.songs = req.data.program.songs;
 		console.log(req)
 		}).catch((e)=>{
 		  console.log('获取电台节目失败')
 		});
-		
-		
       }
     },
     mounted(){
@@ -141,11 +131,6 @@
     color: #C20C0C;
     margin-right: 30px;
   }
-  .chuangjian{
-     margin: 0 30px;
-	 color: #999999;
-	 font-size: 12px;
-    }
     .liebiao{
       font-size: 12px;
       color: #333333;
@@ -155,17 +140,6 @@
     .tubiao{
       font-size: 22px;
     }
-    .biaotou{
-      color: #000;
-      font-size: 16px;
-      margin-top: 20px;
-      border: 1px solid #d9d9d9;
-    }
-    .liebiao1{
-      height: 30px;
-      padding-left:10px;
-      line-height: 30px;
-      }
       .shuzi{
         text-align: center;
       }
@@ -182,7 +156,7 @@
 		  float: left;
 		  
 	  }
-	  .youbian{
+	  .youbian2{
 		  width: 500px;
 		  margin-left: 90px;
 		  
@@ -203,7 +177,6 @@
 		  height: 200px;
 		  border: 1px solid #d9d9d9;
 		  padding: 5px 5px;
-		  /* margin-right: 20px; */
 	  }
 	  .anniu{
 		  margin: 30px 0;
@@ -232,5 +205,8 @@
 	}
 	.dingyue1{
 		margin: 20px 0;
+	}
+	.jiemu11{
+		margin-bottom: 10px;
 	}
 </style>
