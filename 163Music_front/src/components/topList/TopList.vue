@@ -147,7 +147,11 @@
           this.trackCount = req.data.list[i].trackCount
           //console.log(req)
         }).catch(err => {
-          alert("rankingLeft获取失败")
+          this.$notify.error({
+            title: '错误',
+            message: 'rankingLeft获取失败',
+            position: 'bottom-right'
+          });
         });
       },
       getPlayList(id, index, all) {
@@ -172,7 +176,11 @@
 
 
         }).catch(err => {
-          alert("排行榜歌单获取失败")
+          this.$notify.error({
+            title: '错误',
+            message: '排行榜歌单获取失败',
+            position: 'bottom-right'
+          });
         })
       }
     }

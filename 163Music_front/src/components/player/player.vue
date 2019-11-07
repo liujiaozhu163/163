@@ -78,10 +78,6 @@
     watch: {
       alInfo_id: function(val) {
         this.getSong(val)
-      },
-      mName: function(val) {
-        console.log("sdas”")
-        console.log(this.mName)
       }
     },
     mounted() {
@@ -103,7 +99,11 @@
           this.mName = this.alInfo_name
           this.success(req)
         }).catch(err => {
-          alert("歌曲播放失败");
+          this.$notify.error({
+            title: '错误',
+            message: '歌曲播放失败',
+            position: 'bottom-right'
+          });
         })
       },
 
@@ -117,10 +117,11 @@
           setInterval(() => {
             this.currentTime = aud.currentTime;
             this.percentage = ((this.currentTime * 100 | 0) / (this.duration | 0)) | 0
-            if (aud.currentTime == aud.duration) {
+            if (this.percentage==100) {
+              aud.currentTime="0"
               this.autoNext(this.$store.state.info[this.count].id)
             }
-          }, 200)
+          }, 900)
         }
       },
 
@@ -139,13 +140,14 @@
         }).then(req => {
           this.mPicUrl = this.$store.state.info[this.count].url
           this.mName = this.$store.state.info[this.count].name
-          console.log(this.count)
-          console.log(this.alInfo_name)
-          console.log(this.mName, this.mPicUrl)
           this.success(req)
 
         }).catch(err => {
-          console.log('上一曲错误')
+          this.$notify.error({
+            title: '错误',
+            message: '上一曲错误',
+            position: 'bottom-right'
+          });
         })
       },
 
@@ -156,8 +158,6 @@
           this.count = 0;
         }
         info_id = this.$store.state.info[this.count].id
-        console.log(info_id)
-        console.log(this.count)
         this.$http.get('/song/url', {
           params: {
             id: info_id
@@ -165,9 +165,13 @@
         }).then(req => {
           this.mPicUrl = this.$store.state.info[this.count].url
           this.mName = this.$store.state.info[this.count].name
-          this.success(req)
+          // this.success(req)
         }).catch(err => {
-          console.log('下一曲错误')
+          this.$notify.error({
+            title: '错误',
+            message: '下一曲错误',
+            position: 'bottom-right'
+          });
         })
       },
       //暂停
@@ -184,6 +188,7 @@
 
       },
       autoNext(id) {
+        console.log( this.percentage)
         this.downSong(id)
       },
 
