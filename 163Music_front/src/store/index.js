@@ -1,8 +1,27 @@
-import Vue from 'vue'
 
-import Vuex from 'vuex'
+import Vue from "vue"
+import Vuex from "vuex"
+import actions from './actions'
+import getters from './getters'
+import state from './state'
+import mutations from './mutations'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state,
+  mutations,
+  actions,
+  getters
+})
+
+
+
+
+
+
+
+/* Vue.use(Vuex)
 
 const store =  new Vuex.Store({
   state:{
@@ -14,7 +33,7 @@ const store =  new Vuex.Store({
   },
   mutations:{
     setuserInfo(state,user){
-      localStorage.setItem("userIfor",JSON,stringify(user))
+      localStorage.setItem("userInfo",JSON.stringify(user))
       state.isLogin=false;
       state.userInfo=user;
 
@@ -28,3 +47,4 @@ const store =  new Vuex.Store({
   }
 });
 export default store;
+ */
