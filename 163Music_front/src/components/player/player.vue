@@ -78,10 +78,6 @@
     watch: {
       alInfo_id: function(val) {
         this.getSong(val)
-      },
-      mName: function(val) {
-        console.log("sdas”")
-        console.log(this.mName)
       }
     },
     mounted() {
@@ -143,9 +139,6 @@
         }).then(req => {
           this.mPicUrl = this.$store.state.info[this.count].url
           this.mName = this.$store.state.info[this.count].name
-          console.log(this.count)
-          console.log(this.alInfo_name)
-          console.log(this.mName, this.mPicUrl)
           this.success(req)
 
         }).catch(err => {
@@ -164,8 +157,6 @@
           this.count = 0;
         }
         info_id = this.$store.state.info[this.count].id
-        console.log(info_id)
-        console.log(this.count)
         this.$http.get('/song/url', {
           params: {
             id: info_id
@@ -173,7 +164,7 @@
         }).then(req => {
           this.mPicUrl = this.$store.state.info[this.count].url
           this.mName = this.$store.state.info[this.count].name
-          this.success(req)
+         // this.success(req)
         }).catch(err => {
           this.$notify.error({
             title: '错误',
