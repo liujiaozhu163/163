@@ -7,6 +7,10 @@ import store from './store'// 引入 vuex 状态管理 插件
 import axios from 'axios' // // 引入 axios 请求数据 插件
 import ElementUI from 'element-ui' // // 引入 elementUI 前端 插件
 import 'element-ui/lib/theme-chalk/index.css' // elementUI css样式
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'jquery/dist/jquery.js'
+import 'bootstrap'
 Vue.use(ElementUI) // 在 vue 中使用 element 插件
 
 axios.defaults.baseURL = "http://localhost:3000"; //  设置axios默认请求数据的服务器和端口
