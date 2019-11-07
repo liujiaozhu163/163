@@ -19,7 +19,7 @@
                 <el-progress ref="progress" :text-inside="true" :stroke-width="15" :percentage="percentage" status="exception">
                 </el-progress>
               </div>
- 
+
             </el-col>
             <el-col :span="4" class="time">{{ setTime(currentTime) }} / {{setTime(duration)}}</el-col>
             <el-col :span="2" class="time">
@@ -103,7 +103,11 @@
           this.mName = this.alInfo_name
           this.success(req)
         }).catch(err => {
-          alert("歌曲播放失败");
+          this.$notify.error({
+            title: '错误',
+            message: '歌曲播放失败',
+            position: 'bottom-right'
+          });
         })
       },
 
@@ -145,7 +149,11 @@
           this.success(req)
 
         }).catch(err => {
-          console.log('上一曲错误')
+          this.$notify.error({
+            title: '错误',
+            message: '上一曲错误',
+            position: 'bottom-right'
+          });
         })
       },
 
@@ -167,7 +175,11 @@
           this.mName = this.$store.state.info[this.count].name
           this.success(req)
         }).catch(err => {
-          console.log('下一曲错误')
+          this.$notify.error({
+            title: '错误',
+            message: '下一曲错误',
+            position: 'bottom-right'
+          });
         })
       },
       //暂停
