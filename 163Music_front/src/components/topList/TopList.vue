@@ -61,9 +61,16 @@
               </tr>
               <tr v-for="(items,index) in tracks">
                 <td><span>{{index+1}}</span></td>
-                <td v-if="index<3"><img :src="items.al.picUrl" width="50"><span class="el-icon-video-play size">
-                  </span><span> {{(items.al.name).substring(0,15)}}</span></td>
-                <td v-if="index>=3"><span class="el-icon-video-play size"> </span><span>{{(items.al.name).substring(0,20)}}</span></td>
+                <td v-if="index<3">
+                  <img :src="items.al.picUrl" width="50">
+                  <span class="el-icon-video-play size" @click="getPlayList(sId,index)"></span>
+                  <span> {{(items.al.name).substring(0,15)}}</span>
+
+                </td>
+                <td v-if="index>=3">
+                  <span class="el-icon-video-play size" @click="getPlayList(sId,index)"> </span>
+                  <span>{{(items.al.name).substring(0,20)}}</span>
+                </td>
                 <td>{{new Date(items.dt).getMinutes().toString().padStart(2,'0')}}:{{new Date(items.dt).getSeconds().toString().padStart(2,'0')}}</td>
                 <td><span>{{ getName(items.ar)}}</span></td>
               </tr>
@@ -76,8 +83,11 @@
 </template>
 
 <script>
+  import {
+    mapState
+  } from 'vuex'
   export default {
-    name: "topList",
+    name: "ranking",
     data() {
       return {
         list: [],
@@ -89,14 +99,23 @@
         playCount: '',
         trackCount: '',
         /* playlist*/
-        tracks: []
+        tracks: [],
+        alInfo: {},
+        sId: ''
+      }
+    },
+    computed: {
+      ...mapState({
+        alinfo: state => state.alInfo
+      }),
+      alInfo: function() {
+        return this.alInfo;
       }
     },
     created() {
       this.getRanking(0)
     },
     methods: {
-
       getName(arr) {
         let str = "";
         for (let i = 0; i < arr.length; i++) {
@@ -112,11 +131,11 @@
           return str;
         }
         return str;
-
       },
       getRanking(i) {
         this.$http.get('toplist/detail').then(req => {
-          this.getPlayList(req.data.list[i].id)
+          this.sId = req.data.list[i].id
+          this.getPlayList(this.sId)
           let lists = req.data.list
           this.list = lists
           this.coverImgUrl = req.data.list[i].coverImgUrl
@@ -127,10 +146,8 @@
           this.playCount = req.data.list[i].playCount
           this.trackCount = req.data.list[i].trackCount
           //console.log(req)
-
-
         }).catch(err => {
-          // alert("rankingLeft获取失败")
+           alert("rankingLeft获取失败")
         });
       },
       getPlayList(id, index) {
@@ -141,8 +158,12 @@
         }).then(req => {
           let tracks = req.data.playlist.tracks;
           this.tracks = tracks
-          console.log(tracks)
-
+          // console.log(tracks)
+          if (index != null) {
+           this.$store.dispatch("setAlInfo", tracks[index])
+           this.$store.dispatch("setInfo", tracks[index])
+           // console.log(this.alinfo)
+          }
         }).catch(err => {
           alert("排行榜歌单获取失败")
         })
@@ -169,10 +190,12 @@
     display: flex;
     list-style-type: none;
   }
-h4{
-  margin: 30px 0;
-  font-weight: bold;
-}
+
+  h4 {
+    margin: 30px 0;
+    font-weight: bold;
+  }
+
   .ulDiv2 {
     margin: 0 10px;
   }
