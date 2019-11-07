@@ -20,11 +20,22 @@ export default {
       }
     }
     if (sum == state.info.length) {
-      state.info.unshift({
-        id: tracks.id,
-        name: tracks.name,
-        url: tracks.al.picUrl
-      })
+      if (tracks.length>1) {
+        for (var s = 0; s < 100; s++) {
+          state.info.push({
+            id: tracks[s].id,
+            name: tracks[s].name,
+            url: tracks[s].al.picUrl
+          })
+        }
+      }else{
+        state.info.unshift({
+          id: tracks.id,
+          name: tracks.name,
+          url: tracks.al.picUrl
+        })
+      }
+
       localStorage.setItem('info', JSON.stringify(state.info))
     }
   }
