@@ -19,7 +19,7 @@
                 <el-progress ref="progress" :text-inside="true" :stroke-width="15" :percentage="percentage" status="exception">
                 </el-progress>
               </div>
-
+ 
             </el-col>
             <el-col :span="4" class="time">{{ setTime(currentTime) }} / {{setTime(duration)}}</el-col>
             <el-col :span="2" class="time">
