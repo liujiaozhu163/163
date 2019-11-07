@@ -8,11 +8,12 @@
             <td>
               <h4>播放列表</h4>
             </td>
+            <td><span class='el-icon-close size' @click="delALLSong()"></span></td>
           </tr>
           <tr v-for="(items,index) in info">
             <td class='el-icon-video-play size'></td>
             <td>{{items.name}}</td>
-            <td><span class='el-icon-close size' @click=delSong(index)></span></td>
+            <td><span class='el-icon-close size' @click="delSong(index)"></span></td>
           </tr>
         </table>
       </el-popover>
@@ -42,6 +43,9 @@
     methods: {
       delSong(index) {
         this.$store.state.info.splice(index, 1)
+      },
+      delALLSong(){
+        this.$store.state.info.splice(0,100)
       }
     }
 
@@ -52,7 +56,6 @@
   .tab3 tr,
   .tab3 td {
     height: 25px;
-    /* color:#FFFFFF; */
   }
 
   .el-popper {
