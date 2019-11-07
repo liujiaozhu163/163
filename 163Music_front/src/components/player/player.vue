@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div> <audio  :src="songSrc" autoplay ref='audio'></audio> <br><br> <br></div> <!-- controls -->
+    <div> <audio :src="songSrc" autoplay ref='audio'></audio> <br><br> <br></div> <!-- controls -->
     <div class="wei">
 
       <div class="container ">
@@ -54,8 +54,8 @@
         alInfo: {},
         info: [],
         count: 0,
-        mPicUrl:"",
-        mName:"歌名"
+        mPicUrl: "",
+        mName: "歌名"
       }
     },
     created() {
@@ -79,14 +79,13 @@
       alInfo_id: function(val) {
         this.getSong(val)
       },
-      mName:function(val){
+      mName: function(val) {
         console.log("sdas”")
         console.log(this.mName)
       }
     },
     mounted() {
       console.log(this.$store.state.alInfo);
-      // this.getSong(1378945187); 1397717410  1396973729 1399533630
     },
     methods: {
       progress() {
@@ -100,8 +99,8 @@
             id: alInfo_id
           }
         }).then(req => {
-          this.mPicUrl=this.alInfo_picUrl
-          this.mName=this.alInfo_name
+          this.mPicUrl = this.alInfo_picUrl
+          this.mName = this.alInfo_name
           this.success(req)
         }).catch(err => {
           alert("歌曲播放失败");
@@ -112,12 +111,7 @@
       success(req) {
         let aud = this.$refs.audio
         this.paused = aud.paused;
-        //  console.log(this.paused)
-        console.log("歌曲信息,成功")
-        console.log(req)
         this.songSrc = req.data.data[0].url
-        //console.log(this.$refs.audio.src)
-        //  console.log(this.songSrc)
         aud.oncanplay = () => {
           this.duration = aud.duration;
           setInterval(() => {
@@ -138,18 +132,16 @@
           this.count = 0;
         }
         info_id = this.$store.state.info[this.count].id
-        console.log(info_id)
-        console.log(this.count)
         this.$http.get('/song/url', {
           params: {
             id: info_id
           }
         }).then(req => {
-          this.mPicUrl=this.$store.state.info[this.count].url
-          this.mName=this.$store.state.info[this.count].name
+          this.mPicUrl = this.$store.state.info[this.count].url
+          this.mName = this.$store.state.info[this.count].name
           console.log(this.count)
           console.log(this.alInfo_name)
-          console.log(this.mName,this.mPicUrl)
+          console.log(this.mName, this.mPicUrl)
           this.success(req)
 
         }).catch(err => {
@@ -171,11 +163,8 @@
             id: info_id
           }
         }).then(req => {
-          this.mPicUrl=this.$store.state.info[this.count].url
-          this.mName=this.$store.state.info[this.count].name
-          console.log(this.count)
-          console.log(this.alInfo_name)
-          console.log(this.mName,this.mPicUrl)
+          this.mPicUrl = this.$store.state.info[this.count].url
+          this.mName = this.$store.state.info[this.count].name
           this.success(req)
         }).catch(err => {
           console.log('下一曲错误')
