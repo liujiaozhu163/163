@@ -34,7 +34,7 @@
             <p class="el-icon-time"> 最近更新：{{(new Date(updateTime).getMonth()+1).toString().padStart(2,'0')}}月{{new Date(updateTime).getDate().toString().padStart(2,'0')}}日<span
                 class="lspan">（{{updateFrequency}}）</span></p>
             <div class="lButton">
-              <button class="btn btn-primary  btn-primary "> <span class="el-icon-video-play btn-primary size"></span>播放
+              <button class="btn btn-primary  btn-primary " @click="getPlayList(sId,null,'all')"> <span class="el-icon-video-play btn-primary size"></span>播放
                 <span class="el-icon-plus size plus"></span></button>
               <button class="btn bg"><span class="el-icon-folder-add bg size"></span> ({{subscribedCount}}) </button>
               <button class="btn bg"><span class="el-icon-share bg size"></span> (6666) </button>
@@ -64,12 +64,12 @@
                 <td v-if="index<3">
                   <img :src="items.al.picUrl" width="50">
                   <span class="el-icon-video-play size" @click="getPlayList(sId,index)"></span>
-                  <span> {{(items.al.name).substring(0,15)}}</span>
+                  <span> {{(items.name).substring(0,15)}}</span>
 
                 </td>
                 <td v-if="index>=3">
                   <span class="el-icon-video-play size" @click="getPlayList(sId,index)"> </span>
-                  <span>{{(items.al.name).substring(0,20)}}</span>
+                  <span>{{(items.name).substring(0,20)}}</span>
                 </td>
                 <td>{{new Date(items.dt).getMinutes().toString().padStart(2,'0')}}:{{new Date(items.dt).getSeconds().toString().padStart(2,'0')}}</td>
                 <td><span>{{ getName(items.ar)}}</span></td>
@@ -147,10 +147,10 @@
           this.trackCount = req.data.list[i].trackCount
           //console.log(req)
         }).catch(err => {
-           alert("rankingLeft获取失败")
+          alert("rankingLeft获取失败")
         });
       },
-      getPlayList(id, index) {
+      getPlayList(id, index, all) {
         this.$http.get('/playlist/detail', {
           params: {
             id: id
@@ -160,10 +160,17 @@
           this.tracks = tracks
           // console.log(tracks)
           if (index != null) {
-           this.$store.dispatch("setAlInfo", tracks[index])
-           this.$store.dispatch("setInfo", tracks[index])
-           // console.log(this.alinfo)
+            this.$store.dispatch("setAlInfo", tracks[index])
+            this.$store.dispatch("setInfo", tracks[index])
+            // console.log(this.alinfo)
           }
+
+          if (all != null) {
+            this.$store.dispatch("setInfo", tracks)
+          }
+
+
+
         }).catch(err => {
           alert("排行榜歌单获取失败")
         })
