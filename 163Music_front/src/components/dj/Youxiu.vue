@@ -30,10 +30,10 @@
 			}
 		},
 		methods:{
-			getyouxiu(id){
+			getyouxiu(id){//传进来的id
 				this.$http.get('/dj/recommend/type',{
 				  params:{
-				    type:id
+				    type:id   //直接就可以写这个id
 				  },
 				}).then((req)=>{
 				this.djRadios = req.data.djRadios;
@@ -44,7 +44,7 @@
 			}
 		},
 		mounted(){
-			console.log(this.id);
+			// console.log(this.id);
 		}
 	}
 </script>

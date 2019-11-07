@@ -57,6 +57,7 @@ export default new Router({
 		  path:'/dj/:id',
 		  name:'youxiu',
 		  component: Youxiu
-		}
+		},
+	
   ]
 })
