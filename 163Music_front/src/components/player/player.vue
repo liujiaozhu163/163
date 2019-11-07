@@ -117,10 +117,11 @@
           setInterval(() => {
             this.currentTime = aud.currentTime;
             this.percentage = ((this.currentTime * 100 | 0) / (this.duration | 0)) | 0
-            if (aud.currentTime == aud.duration) {
+            if (this.percentage==100) {
+              aud.currentTime="0"
               this.autoNext(this.$store.state.info[this.count].id)
             }
-          }, 200)
+          }, 900)
         }
       },
 
@@ -164,7 +165,7 @@
         }).then(req => {
           this.mPicUrl = this.$store.state.info[this.count].url
           this.mName = this.$store.state.info[this.count].name
-         // this.success(req)
+          // this.success(req)
         }).catch(err => {
           this.$notify.error({
             title: '错误',
@@ -187,6 +188,7 @@
 
       },
       autoNext(id) {
+        console.log( this.percentage)
         this.downSong(id)
       },
 
