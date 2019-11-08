@@ -15,16 +15,16 @@
        </ul>
     </div>
 	<!-- 放一个组件 就是跳转图标的详情  和分类-->
-	<v-youxiu :id="id"></v-youxiu> 
-	
-	
-	
+	<v-youxiu :id="id"></v-youxiu>
+
+
+
 
   <div class="datu-tuijian">
     <!-- 推荐的节目 -->
     <div class="tuijain">
 	 <router-link to="/gengduo">
-      <h3 style="color: #333333;">{{jian}} 
+      <h3 style="color: #333333;">{{jian}}
 	  <span class="geng">更多></span>
 	  </h3>
 	 </router-link>
@@ -51,10 +51,10 @@
            <div class="jiemutouxiang"><el-image :src="items.picUrl">
             </el-image></div>
            <div class="tuijianwenzi ziyanse">
-            
+
 			 <el-link class="" style="color:#333333" type="info"> {{items.rcmdtext}}</el-link><br>
 			 <p class="zuozhe"><el-link class="zuozhe" type="info">{{items.name}}</el-link></p>
-			 
+
            </div>
            <div class="tag ziyanse">{{items.category}}</div>
             </router-link>
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Youxiu from '@/components/dj/Youxiu.vue' 
+import Youxiu from '@/components/dj/Youxiu.vue'
   export default{
     name:'dj',
     components:{
@@ -85,7 +85,7 @@ import Youxiu from '@/components/dj/Youxiu.vue'
       }
     },
     methods:{
-		
+
 		getYouxiu(id){
 			this.id = id;
 		},
@@ -105,7 +105,7 @@ import Youxiu from '@/components/dj/Youxiu.vue'
               }).catch((e)=>{
                 console.log('获取电台信息失败')
               });
-             
+
               //推荐节目
               this.$http.get('/program/recommend',{
                 params:{},
@@ -125,12 +125,12 @@ import Youxiu from '@/components/dj/Youxiu.vue'
 </script>
 
 <style>
-	
+
 	*{
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	.datuFlex{
 		display: flex;
 		flex-wrap: wrap;
@@ -177,13 +177,13 @@ import Youxiu from '@/components/dj/Youxiu.vue'
     margin-left: 10px;
   }
   .jiemu{
-    width: 440px;
+    width: 415px;
     height: 50px;
     /* background-color: red; */
   }
   .tjnr{
     width: 440px;
-    height: 500px;
+    height: 530px;
     border: 1px solid #ccc;
     border-top: 2px solid #C20C0C;
     margin-top: 10px;
