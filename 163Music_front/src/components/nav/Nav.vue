@@ -1,5 +1,5 @@
 <template>
-  
+
   <div>
    <router-link to="/">首页</router-link>
    <router-link to="/topList">排行榜</router-link>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  
+
   export default {
     name:'nav'
   }
