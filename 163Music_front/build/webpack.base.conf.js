@@ -4,7 +4,6 @@ const utils = require('./utils')
 const config = require('../config')
 const webpack = require('webpack')
 const vueLoaderConfig = require('./vue-loader.conf')
-const webpack = require("webpack")
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -81,7 +80,6 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
-<<<<<<< HEAD
      new webpack.ProvidePlugin({
        $: "jquery",
        jQuery: "jquery",
@@ -89,13 +87,5 @@ module.exports = {
        Popper: ["popper.js", "default"]
      })
    ]
-=======
-   new webpack.ProvidePlugin({
-     $: "jquery",
-     jQuery: "jquery",
-     "window.jQuery": "jquery",
-     Popper: ["popper.js", "default"]
-   })
- ]
->>>>>>> 0163dee371546c875f5a8a9f7ef03188e95319dc
+
 }
