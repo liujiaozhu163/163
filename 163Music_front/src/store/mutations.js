@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*包含多个action触发去直接更新状态的方法的对象*/
 import {
   SETALINFO,
@@ -38,5 +39,17 @@ export default {
 
       localStorage.setItem('info', JSON.stringify(state.info))
     }
+=======
+import {
+  SETUERINFO
+} from './mutation-types'
+export default {
+  [SETUERINFO](state, {
+    user
+  }) {
+    localStorage.setItem("userInfo", JSON.stringify(user))
+    state.isLogin = false;
+    state.userInfo = user;
+>>>>>>> origin/wangyonghua
   }
 }

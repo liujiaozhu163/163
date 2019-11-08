@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/wangyonghua
 import Vue from "vue"
 import Vuex from "vuex"
 import actions from './actions'
@@ -20,6 +24,7 @@ export default new Vuex.Store({
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -69,4 +74,32 @@ export default new Vuex.Store({
 
 })
 export default store
+=======
+/* Vue.use(Vuex)
+
+const store =  new Vuex.Store({
+  state:{
+    isLogin:true,
+    userInfo:{}
+  },
+  getters:{
+
+  },
+  mutations:{
+    setuserInfo(state,user){
+      localStorage.setItem("userInfo",JSON.stringify(user))
+      state.isLogin=false;
+      state.userInfo=user;
+
+    }
+  },
+  actions:{
+    setuserInfo(context,user){
+      context.commit("setuserInfo",user);
+
+    }
+  }
+});
+export default store;
+>>>>>>> origin/wangyonghua
  */
