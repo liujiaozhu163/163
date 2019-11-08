@@ -2,7 +2,7 @@
   <div class="ranking container">
     <el-row :gutter="100" class='bor'>
       <el-col :span="7" class="left">
-        <ul>
+        <ul class='ul'>
           <h4>云音乐特色榜</h4>
           <li v-for="(items,i) in list" v-if="i<4" @click="getRanking(i)">
             <div><img :src="items.coverImgUrl" width="50"></div>
@@ -201,11 +201,11 @@
     margin-top: 40px;
   }
 
-  ul {
+  .ul {
     padding-left: 0px;
   }
 
-  li {
+  .ul li {
     display: flex;
     list-style-type: none;
   }

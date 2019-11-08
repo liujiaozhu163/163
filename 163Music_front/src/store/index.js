@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/wangyonghua
 import Vue from "vue"
 import Vuex from "vuex"
 import actions from './actions'
@@ -23,8 +20,6 @@ export default new Vuex.Store({
 
 
 
-
-<<<<<<< HEAD
 
 
 

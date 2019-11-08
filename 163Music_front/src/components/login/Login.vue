@@ -114,7 +114,10 @@
                   position: 'bottom-right'
                 });
               }).catch(err=>{
-                console.log("失败")
+               this.$notify.error({
+                 title: '登录失败',
+                 position: 'bottom-right'
+               });
               });
 
               },

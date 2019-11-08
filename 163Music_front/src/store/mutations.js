@@ -1,8 +1,9 @@
-<<<<<<< HEAD
+
 /*包含多个action触发去直接更新状态的方法的对象*/
 import {
   SETALINFO,
-  SETINFO
+  SETINFO,
+  SETUERINFO
 } from "./mutation-types"
 export default {
   [SETALINFO](state, {
@@ -21,7 +22,7 @@ export default {
       }
     }
     if (sum == state.info.length) {
-      if (tracks.length>1) {
+      if (tracks.length > 1) {
         for (var s = 0; s < 100; s++) {
           state.info.push({
             id: tracks[s].id,
@@ -29,7 +30,7 @@ export default {
             url: tracks[s].al.picUrl
           })
         }
-      }else{
+      } else {
         state.info.unshift({
           id: tracks.id,
           name: tracks.name,
@@ -39,17 +40,12 @@ export default {
 
       localStorage.setItem('info', JSON.stringify(state.info))
     }
-=======
-import {
-  SETUERINFO
-} from './mutation-types'
-export default {
-  [SETUERINFO](state, {
-    user
-  }) {
+  },
+
+  [SETUERINFO](state, {user}) {
     localStorage.setItem("userInfo", JSON.stringify(user))
     state.isLogin = false;
     state.userInfo = user;
->>>>>>> origin/wangyonghua
   }
+
 }

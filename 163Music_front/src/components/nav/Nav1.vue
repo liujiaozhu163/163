@@ -22,23 +22,31 @@
 	    <li>
 	    	<input type="text" value="音乐/视频/电台/用户">
 			<!-- <input type="text" value="搜索"> -->
-	        <button>搜索</button>
+	        <button class="button">搜索</button>
 	    </li>
 	    <li>
 	    	<a href="#">创作者中心</a>
 	    </li>
+      <li class='pull-right'>
+        <v-login></v-login>
+      </li>
 		</ul>
 	</nav>
 </template>
 
 <script>
+    import Login from '@/components/Login/Login.vue'
 	export default{
 	  name:'nav1',
 	  data(){
 	    return{
-	
+
 	    }
 	  }
+    ,
+    components: {
+      'v-login': Login
+    }
 	  }
 </script>
 
@@ -56,18 +64,19 @@
 	.navbar li{
 		float: left;
 		list-style-type: none;
-		line-height: 56px;
+		line-height: 80px;
+    margin:0 25px;
 	}
 	.navbar li a{
 		color: #FFF;
 		text-decoration: none;
-	
-	
+
+
 	}
 	.mingcheng{
 	  font-size: 30px;
 	}
-	button{
+	.button{
 		 line-height: 30px;
 		    width:45px;
 			height:32px;
@@ -89,5 +98,5 @@
 		margin-top: 10px;
 	}
 	 */
-	
+
 </style>

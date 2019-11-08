@@ -6,14 +6,13 @@ import Personalized from '@/components/personalized/Personalized'
 import Artist from '@/components/artist/Artist'
 import Album from '@/components/album/Album'
 import Dj from '@/components/dj/Dj'
-<<<<<<< HEAD
 import Xiangqing from '@/components/dj/Xiangqing'
 import Diantai from '@/components/dj/Diantai'
 import Youxiu from '@/components/dj/Youxiu'
-=======
+
 import gerenxinxi from '@/components/login/gerenxinxi'
 
->>>>>>> origin/wangyonghua
+
 Vue.use(Router)
 
 export default new Router({
@@ -48,7 +47,7 @@ export default new Router({
       name: 'dj',
       component: Dj
     },
-<<<<<<< HEAD
+
 		{
 		  path:'/xiangqing/:id',
 		  name:'xiangqing',
@@ -65,12 +64,12 @@ export default new Router({
 		  component: Youxiu
 		},
 	
-=======
+
    {
      path: '/gerenxinxi/:id',
      name: 'gerenxinxi',
      component: gerenxinxi
    },
->>>>>>> origin/wangyonghua
+
   ]
 })
