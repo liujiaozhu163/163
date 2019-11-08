@@ -17,7 +17,11 @@ import gerenxinxi from '@/components/login/gerenxinxi'
 
 import Singer from'@/components/artist/Singer'
 import Mvs from'@/components/artist/Mvs'
+<<<<<<< HEAD
 
+=======
+import Detail from '@/components/personalized/Detail'
+>>>>>>> origin/chiyunlong
 Vue.use(Router)
 
 export default new Router({
@@ -86,6 +90,11 @@ export default new Router({
       path: '/mvs/:id',
       name: 'mvs',
       component: Mvs
+    },
+    {
+    	path:'/detail/:id',
+    	name:'detail',
+    	component: Detail
     }
   ]
 })

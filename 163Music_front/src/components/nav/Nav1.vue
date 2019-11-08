@@ -1,5 +1,5 @@
 <template>
-	<nav>
+	<nav class="nav">
 		<ul class="navbar">
 	    <li>
 	        <a href="#" class="mingcheng">163.music</a>
@@ -51,7 +51,7 @@
 </script>
 
 <style>
-	nav{
+	.nav{
 		width: 100%;
 		height: 80px;
 		background: #000;
