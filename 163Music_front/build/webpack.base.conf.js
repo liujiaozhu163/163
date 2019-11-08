@@ -4,6 +4,11 @@ const utils = require('./utils')
 const config = require('../config')
 const webpack = require('webpack')
 const vueLoaderConfig = require('./vue-loader.conf')
+<<<<<<< HEAD
+=======
+const webpack = require('webpack')
+
+>>>>>>> origin/wenxingdu
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -79,6 +84,7 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   },
+<<<<<<< HEAD
   plugins: [
      new webpack.ProvidePlugin({
        $: "jquery",
@@ -88,4 +94,14 @@ module.exports = {
      })
    ]
 
+=======
+    plugins: [
+       new webpack.ProvidePlugin({
+         $: "jquery",
+         jQuery: "jquery",
+         "window.jQuery": "jquery",
+         Popper: ["popper.js", "default"]
+       })
+     ]
+>>>>>>> origin/wenxingdu
 }

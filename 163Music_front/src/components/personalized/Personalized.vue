@@ -1,6 +1,6 @@
 <template>
   <div>
-    personalized 推荐歌单
+    personalized
   </div>
 </template>
 
@@ -9,7 +9,10 @@
   export default{
     name:'personalized'
   }
+	
+	
 </script>
 
 <style>
+	
 </style>
