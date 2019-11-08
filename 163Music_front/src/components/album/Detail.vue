@@ -61,7 +61,7 @@ export default{
     },
     methods:{
       getDetail(){
-
+  
         this.$http.post('/album?id='+this.$route.params.id).then((data)=>{
           this.playLists = data.data.album;
           this.songs=data.data.songs;
