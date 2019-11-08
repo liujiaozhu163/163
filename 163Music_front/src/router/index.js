@@ -6,9 +6,18 @@ import Personalized from '@/components/personalized/Personalized'
 import Artist from '@/components/artist/Artist'
 import Album from '@/components/album/Album'
 import Dj from '@/components/dj/Dj'
+
 import Xiangqing from '@/components/dj/Xiangqing'
 import Diantai from '@/components/dj/Diantai'
 import Youxiu from '@/components/dj/Youxiu'
+
+import gerenxinxi from '@/components/login/gerenxinxi'
+
+
+import Singer from'@/components/artist/Singer'
+import Mvs from'@/components/artist/Mvs'
+import Detail from '@/components/personalized/Detail'
+
 Vue.use(Router)
 
 export default new Router({
@@ -43,6 +52,8 @@ export default new Router({
       name: 'dj',
       component: Dj
     },
+
+
 		{
 		  path:'/xiangqing/:id',
 		  name:'xiangqing',
@@ -57,6 +68,29 @@ export default new Router({
 		  path:'/dj/:id',
 		  name:'youxiu',
 		  component: Youxiu
-		}
+		},
+
+
+   {
+     path: '/gerenxinxi/:id',
+     name: 'gerenxinxi',
+     component: gerenxinxi
+   },
+
+    {
+      path: '/singer/:id',
+      name: 'singer',
+      component: Singer
+    },
+    {
+      path: '/mvs/:id',
+      name: 'mvs',
+      component: Mvs
+    },
+    {
+    	path:'/detail/:id',
+    	name:'detail',
+    	component: Detail
+    }
   ]
 })

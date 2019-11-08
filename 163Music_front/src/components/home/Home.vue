@@ -1,23 +1,28 @@
 <template>
   <div>
-    Home
     <v-banner></v-banner>
-    <v-personalized></v-personalized>
+    <v-highquality></v-highquality>
   </div>
 </template>
 
 <script>
-
   import Banner from '@/components/banner/Banner.vue'
-  import Personalized from '@/components/personalized/Personalized.vue'
-  export default{
-    name:'home',
-    components:{
-      'v-banner':Banner,
-      'v-personalized':Personalized
+  import Highquality from '@/components/home/Highquality.vue'
+
+  export default {
+    name: 'home',
+    components: {
+      'v-banner': Banner,
+      'v-highquality': Highquality,
+
     }
   }
 </script>
 
 <style>
+  
+  *{
+    margin: 0;
+    padding: 0;
+  }
 </style>

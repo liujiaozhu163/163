@@ -15,29 +15,31 @@
        </ul>
     </div>
 	<!-- 放一个组件 就是跳转图标的详情  和分类-->
-	<v-youxiu :id="id"></v-youxiu> 
-	
-	
-	
+	<v-youxiu :id="id"></v-youxiu>
+
+
+
 
   <div class="datu-tuijian">
     <!-- 推荐的节目 -->
     <div class="tuijain">
-      <h3>{{jian}}</h3>
+	 <router-link to="/gengduo">
+      <h3 style="color: #333333;">{{jian}}
+	  <span class="geng">更多></span>
+	  </h3>
+	 </router-link>
        <div class="tjnr">
-        <!-- <router-link :to="{name:'xiangqing',params:{id:items.programs.radio.lastProgramId}}"> -->
               <div class="jiemu" v-for="(items,index) in programs" :key="index">
                 <router-link :to="{name:'xiangqing',params:{id:items.radio.lastProgramId}}">
                 <div class="jiemutouxiang"><el-image :src="items.radio.picUrl">
                  </el-image></div>
                 <div class="tuijianwenzi ziyanse">
-                  {{items.mainSong.name.substring(0,18)}}<br>
-                  <p class="zuozhe">{{items.radio.name}}</p>
+                  <el-link class="" style="color:#333333" type="info">{{items.mainSong.name.substring(0,18)}}</el-link><br>
+                  <p class="zuozhe"><el-link class="zuozhe" type="info">{{items.radio.name}}</el-link></p>
                 </div>
                 <div class="tag ziyanse">{{items.radio.category}}</div>
                 </router-link>
               </div>
-        <!-- </router-link> -->
        </div>
     </div>
     <!-- 热门电台 -->
@@ -49,8 +51,10 @@
            <div class="jiemutouxiang"><el-image :src="items.picUrl">
             </el-image></div>
            <div class="tuijianwenzi ziyanse">
-             {{items.rcmdtext}}<br>
-             <p class="zuozhe">{{items.name}}</p>
+
+			 <el-link class="" style="color:#333333" type="info"> {{items.rcmdtext}}</el-link><br>
+			 <p class="zuozhe"><el-link class="zuozhe" type="info">{{items.name}}</el-link></p>
+
            </div>
            <div class="tag ziyanse">{{items.category}}</div>
             </router-link>
@@ -62,7 +66,7 @@
 </template>
 
 <script>
-import Youxiu from '@/components/dj/Youxiu.vue' 
+import Youxiu from '@/components/dj/Youxiu.vue'
   export default{
     name:'dj',
     components:{
@@ -81,7 +85,7 @@ import Youxiu from '@/components/dj/Youxiu.vue'
       }
     },
     methods:{
-		
+
 		getYouxiu(id){
 			this.id = id;
 		},
@@ -91,7 +95,7 @@ import Youxiu from '@/components/dj/Youxiu.vue'
               this.categories = req.data.categories;
 			  this.id = this.categories[0].id
               }).catch((e)=>{
-                console.log('获取电台分类信息失败111')
+                console.log('获取电台分类信息失败')
               });
                 //热门电台
               this.$http.get('/dj/hot',{
@@ -99,9 +103,9 @@ import Youxiu from '@/components/dj/Youxiu.vue'
               }).then((req)=>{
               this.djRadios = req.data.djRadios;
               }).catch((e)=>{
-                console.log('获取电台信息失败2222')
+                console.log('获取电台信息失败')
               });
-             
+
               //推荐节目
               this.$http.get('/program/recommend',{
                 params:{},
@@ -121,12 +125,12 @@ import Youxiu from '@/components/dj/Youxiu.vue'
 </script>
 
 <style>
-	
+
 	*{
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	.datuFlex{
 		display: flex;
 		flex-wrap: wrap;
@@ -173,13 +177,13 @@ import Youxiu from '@/components/dj/Youxiu.vue'
     margin-left: 10px;
   }
   .jiemu{
-    width: 440px;
+    width: 415px;
     height: 50px;
     /* background-color: red; */
   }
   .tjnr{
     width: 440px;
-    height: 500px;
+    height: 530px;
     border: 1px solid #ccc;
     border-top: 2px solid #C20C0C;
     margin-top: 10px;
@@ -201,8 +205,8 @@ import Youxiu from '@/components/dj/Youxiu.vue'
   }
   .tuijianwenzi{
     margin-left: 10px;
-    /* width: 20px; */
     float: left;
+	color: #333333;
   }
   .zuozhe{
     font-size: 12px;
@@ -213,5 +217,10 @@ import Youxiu from '@/components/dj/Youxiu.vue'
     float: right;
     border: 1px solid #999;
     font-size: 12px;
+  }
+  .geng{
+	  float: right;
+	  font-size: 12px;
+	  margin-top: 12px;
   }
 </style>

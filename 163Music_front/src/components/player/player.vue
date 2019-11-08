@@ -188,7 +188,6 @@
 
       },
       autoNext(id) {
-        console.log( this.percentage)
         this.downSong(id)
       },
 

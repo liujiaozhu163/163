@@ -1,8 +1,12 @@
 <template>
+  
+  <div  v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+    
+  
   <div class="ranking container">
     <el-row :gutter="100" class='bor'>
       <el-col :span="7" class="left">
-        <ul>
+        <ul class='ul'>
           <h4>云音乐特色榜</h4>
           <li v-for="(items,i) in list" v-if="i<4" @click="getRanking(i)">
             <div><img :src="items.coverImgUrl" width="50"></div>
@@ -27,7 +31,7 @@
       <el-col :span="17" class="right">
         <el-row :gutter="40">
           <el-col :span="6">
-            <img :src="coverImgUrl" class="rimg">
+           <el-image :src="coverImgUrl" style="border:1px solid #292929;padding: 5px;"></el-image>
           </el-col>
           <el-col :span="18">
             <h3>{{sname}}</h3>
@@ -80,6 +84,7 @@
       </el-col>
     </el-row>
   </div>
+  </div>
 </template>
 
 <script>
@@ -90,6 +95,7 @@
     name: "ranking",
     data() {
       return {
+        loading:true,
         list: [],
         coverImgUrl: '',
         sname: '',
@@ -133,7 +139,10 @@
         return str;
       },
       getRanking(i) {
-        this.$http.get('toplist/detail').then(req => {
+        this.$http.get('toplist/detail',{
+          withCredentials: true
+        }
+        ).then(req => {
           this.sId = req.data.list[i].id
           this.getPlayList(this.sId)
           let lists = req.data.list
@@ -158,7 +167,8 @@
         this.$http.get('/playlist/detail', {
           params: {
             id: id
-          }
+          },
+          withCredentials: true
         }).then(req => {
           let tracks = req.data.playlist.tracks;
           this.tracks = tracks
@@ -173,6 +183,10 @@
             this.$store.dispatch("setInfo", tracks)
           }
 
+
+
+
+          this.loading = false;
 
 
         }).catch(err => {
@@ -197,11 +211,11 @@
     margin-top: 40px;
   }
 
-  ul {
+  .ul {
     padding-left: 0px;
   }
 
-  li {
+  .ul li {
     display: flex;
     list-style-type: none;
   }

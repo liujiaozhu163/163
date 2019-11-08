@@ -80,11 +80,11 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
-   new webpack.ProvidePlugin({
-     $: "jquery",
-     jQuery: "jquery",
-     "window.jQuery": "jquery",
-     Popper: ["popper.js", "default"]
-   })
- ]
+     new webpack.ProvidePlugin({
+       $: "jquery",
+       jQuery: "jquery",
+       "window.jQuery": "jquery",
+       Popper: ["popper.js", "default"]
+     })
+   ]
 }
