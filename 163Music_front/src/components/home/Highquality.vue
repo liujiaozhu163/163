@@ -41,7 +41,7 @@
 	      this.$http.get('/top/playlist/highquality',{
 	        params:{
 	          before:new Date().getTime(),
-	          limit:16
+	          limit:24
 	        }
 	      }).then(data=>{
 	        // console.log(data);
@@ -77,8 +77,6 @@
 	}
 	.recommend{
 		font-size:26px;
-		/* text-decoration: none; */
-		/* border-right: none; */
 		style:"border:none"
 	}
 	.classify li{

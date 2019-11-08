@@ -1,6 +1,16 @@
 <template>
 	<nav>
 		<ul class="navbar">
+			 <div class="demo-type">
+			    
+			    <!-- <div>
+			      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+			    </div> -->
+			   
+			  </div>
+			<div class="icon">
+			<img src="../../assets/网易云图标.png">
+			</div>
 	    <li>
 	        <a href="#" class="mingcheng">163.music</a>
 	    </li>
@@ -64,6 +74,16 @@
 	
 	
 	}
+	.icon img{
+		border-radius:16px;
+		width:32px;
+		height:32px;
+		margin-right:-32px;
+	}
+	.icon{
+		margin-right:-20px;
+	}
+	
 	.mingcheng{
 	  font-size: 30px;
 	}
