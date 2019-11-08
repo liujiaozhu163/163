@@ -22,7 +22,7 @@
 
   <div class="datu-tuijian">
     <!-- 推荐的节目 -->
-    <div class="">
+    <div class="tuijain">
 	 <router-link to="/gengduo">
       <h3 style="color: #333333;">{{jian}} 
 	  <span class="geng">更多></span>
@@ -35,9 +35,9 @@
                  </el-image></div>
                 <div class="tuijianwenzi ziyanse">
                   <el-link class="" style="color:#333333" type="info">{{items.mainSong.name.substring(0,18)}}</el-link><br>
-                  <p class="zuozhe1234"><el-link class="zuozhe" type="info">{{items.radio.name}}</el-link></p>
+                  <p class="zuozhe"><el-link class="zuozhe" type="info">{{items.radio.name}}</el-link></p>
                 </div>
-                <div class="tag1234 ziyanse">{{items.radio.category}}</div>
+                <div class="tag ziyanse">{{items.radio.category}}</div>
                 </router-link>
               </div>
        </div>
@@ -53,10 +53,10 @@
            <div class="tuijianwenzi ziyanse">
             
 			 <el-link class="" style="color:#333333" type="info"> {{items.rcmdtext}}</el-link><br>
-			 <p class="zuozhe1234"><el-link class="zuozhe" type="info">{{items.name}}</el-link></p>
+			 <p class="zuozhe"><el-link class="zuozhe" type="info">{{items.name}}</el-link></p>
 			 
            </div>
-           <div class="tag1234 ziyanse">{{items.category}}</div>
+           <div class="tag ziyanse">{{items.category}}</div>
             </router-link>
          </div>
        </div>
@@ -208,12 +208,12 @@ import Youxiu from '@/components/dj/Youxiu.vue'
     float: left;
 	color: #333333;
   }
-  .zuozhe1234{
+  .zuozhe{
     font-size: 12px;
     color: #999;
     margin-top: 1px;
   }
-  .tag1234{
+  .tag{
     float: right;
     border: 1px solid #999;
     font-size: 12px;
