@@ -133,7 +133,10 @@
         return str;
       },
       getRanking(i) {
-        this.$http.get('toplist/detail').then(req => {
+        this.$http.get('toplist/detail',{
+          withCredentials: true
+        }      
+        ).then(req => {
           this.sId = req.data.list[i].id
           this.getPlayList(this.sId)
           let lists = req.data.list
@@ -158,7 +161,8 @@
         this.$http.get('/playlist/detail', {
           params: {
             id: id
-          }
+          },
+          withCredentials: true
         }).then(req => {
           let tracks = req.data.playlist.tracks;
           this.tracks = tracks
