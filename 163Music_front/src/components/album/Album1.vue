@@ -5,7 +5,7 @@
    
 
         <h2>{{msg1}}<hr></h2>
-  
+    
       <el-row :gutter="20">
          <el-col :span="4" v-for="(items,index) in playLists" :key="index">
 
