@@ -7,7 +7,8 @@ import Artist from '@/components/artist/Artist'
 import Album from '@/components/album/Album'
 import Dj from '@/components/dj/Dj'
 import Singer from'@/components/artist/Singer'
-import Mvs from'@/components/artist/Mvs' 
+import Mvs from'@/components/artist/Mvs'
+import Detail from '@/components/personalized/Detail'
 Vue.use(Router)
 
 export default new Router({
@@ -51,6 +52,11 @@ export default new Router({
       path: '/mvs/:id',
       name: 'mvs',
       component: Mvs
+    },
+    {
+    	path:'/detail/:id',
+    	name:'detail',
+    	component: Detail
     }
   ]
 })
