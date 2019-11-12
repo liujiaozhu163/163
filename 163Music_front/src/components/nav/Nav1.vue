@@ -20,7 +20,7 @@
 	    	<a href="#">下载客户端</a>
 	    </li>
 	    <li>
-	    	<input type="text" value="音乐/视频/电台/用户">
+	    	<input type="text" class="sousu" value="音乐/视频/电台/用户">
 			<!-- <input type="text" value="搜索"> -->
 	        <button class="button">搜索</button>
 	    </li>
@@ -60,43 +60,52 @@
 		width: 1200px;
 		margin: auto;
 		overflow: auto;
+
 	}
 	.navbar li{
 		float: left;
 		list-style-type: none;
 		line-height: 80px;
-    margin:0 25px;
+    margin:0 20px;
+
 	}
 	.navbar li a{
 		color: #FFF;
 		text-decoration: none;
-
-
 	}
 	.mingcheng{
 	  font-size: 30px;
 	}
 	.button{
 		 line-height: 30px;
-		    width:45px;
-			height:32px;
-			 border-radius: 20px;
-			background: #cc0404e8;
+		    width:42px;
+			height:30px;
+			 border-radius: 15px;
+			background: #fff;
 			padding:0;
 			font-size:13px;
+			border:none;
 		}
-	.navbar li input{
-	  width:160px;
+	.navbar li .sousu{
+	  /* width:160px; */
 	  height:30px;
 	  border-radius: 20px;
 	  line-height: 30px;
 	  font-size:13px;
 	}
-	/* .navbar li button{
-		color:#fd2300;
-		height:30px;
-		margin-top: 10px;
-	}
-	 */
+  .icon{
+    display: inline-block;
+    positon:relative;
+    left:10px;
+  }
+  /* .icon img{
+    width:32px;
+    height:32px;
+    border-radius:16px;
+    margin-right:-32px;
+  } */
+
+
+
 
 </style>

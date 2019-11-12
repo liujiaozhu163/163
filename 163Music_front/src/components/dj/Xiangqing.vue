@@ -42,9 +42,9 @@
         {{program.description}}
       </div>
 	 <!-- 歌曲的列表 -->
-	 
+
 	 <div v-if="false">
-		 
+
 	 </div>
       <div class="liebiao biaotou" v-else>
         <div class="liebiao1" >节目包含的歌曲列表</div>
@@ -54,7 +54,7 @@
                     {{index+1}}
                   </td>
                   <td width="30px">
-                    <i class="el-icon-video-play tubiao"></i>
+                    <i class="el-icon-video-play tubiao" ></i>
                   </td>
                   <td width="400px">
                      {{items.name}}
@@ -124,7 +124,7 @@
 		}).catch((e)=>{
 		  console.log('获取电台节目详情失败')
 		});
-		
+
       }
     },
     mounted(){
@@ -185,7 +185,7 @@
 		  text-align: center;
 		  margin-right: 10px;
 		  float: left;
-		  
+
 	  }
 	  .youbian1{
 		  display: flex;

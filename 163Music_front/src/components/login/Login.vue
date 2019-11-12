@@ -1,11 +1,11 @@
 <template>
   <div class="login">
-    <div v-if="this.$store.state.isLogin">
+    <div  v-if="this.$store.state.isLogin">
       <el-button type="text" @click="centerDialogVisible = true">登录</el-button>
     </div>
         <!-- 登录后触发显示下拉-->
        <div v-else>
-           <el-dropdown @command="loginOut">
+           <el-dropdown  @command="loginOut">
              <span class="el-dropdown-link">
                <el-avatar :src="avatarUrl"></el-avatar><i class="el-icon-arrow-down el-icon--right"></i>
              </span>
@@ -15,9 +15,7 @@
                  我的主页
                  </router-link>
                  </el-dropdown-item>
-               <el-dropdown-item command="b">我的等级</el-dropdown-item>
-               <el-dropdown-item command="c">我的消息</el-dropdown-item>
-               <el-dropdown-item command="c">VIP会员</el-dropdown-item>
+
                <el-dropdown-item command="d">退出</el-dropdown-item>
              </el-dropdown-menu>
            </el-dropdown>
@@ -131,7 +129,14 @@
                     this.$store.state.isLogin=true;
                     this.$store.state.userInfo=null;
                     localStorage.clear();
-                    this.$router.push({name:'/',component:'Home'})
+
+                    this.$notify({
+                      title: '成功',
+                      message: '退出成功',
+                      type: 'success',
+                      position: 'bottom-right'
+                    });
+                     this.$router.push({name:'/',component:'Home'})
                   }).catch(err=>{
                     console.log('退出失败');
                   });
@@ -143,4 +148,8 @@
 </script>
 
 <style>
+ .el-popper {
+     height: auto !important;
+     overflow: auto  !important;
+ }
 </style>

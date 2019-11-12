@@ -1,5 +1,6 @@
 <template>
-	<div class="highquality">
+  <div  v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+	<div class="highquality" >
 	  <div class="container">
 			<div class="classify">
 				<ul>
@@ -14,7 +15,7 @@
 	<!-- <h1>{{msg}}</h1> -->
 
 	     <el-row :gutter="20">
-	       <el-col :span="6" v-for="(items,index) in playLists" :key="index">
+	       <el-col :span="6" v-for="(items,index) in playLists" :key="index" style="height: 300px;">
 	         <router-link :to="{name:'detail',params:{id:items.id}}">
 	           <el-image :src="items.coverImgUrl"></el-image>
 	           <p class="text-center">
@@ -25,6 +26,7 @@
 	     </el-row>
 	 </div>
 	</div>
+  </div>
 </template>
 
 <script>
@@ -33,7 +35,8 @@
 	  data(){
 	    return{
 	      msg:'热门推荐',
-	      playLists:[]
+	      playLists:[],
+        loading:true
 	    }
 	  },
 	  methods:{
@@ -47,6 +50,7 @@
 	        // console.log(data);
 
 	       this.playLists = data.data.playlists;
+         this.loading=false;
 	      }).catch(e=>{
 	        console.log("歌单获取失败");
 	      });
@@ -59,7 +63,7 @@
 </script>
 
 <style>
-	
+
 	.text-center{
 	  text-align: center;
 	}
@@ -73,8 +77,6 @@
 	}
 	.recommend{
 		font-size:26px;
-		/* text-decoration: none; */
-		/* border-right: none; */
 		style:"border:none"
 	}
 	.classify li{

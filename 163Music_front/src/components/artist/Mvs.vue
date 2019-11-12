@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video width="720" height="600" controls>
+    <video width="100%" height="100%" controls>
       <source :src="this.url" type="video/mp4">
     </video>
   </div>

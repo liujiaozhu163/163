@@ -3,7 +3,9 @@
 <div  v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.8)">
 
   <div class="personalized">
-   <div class="container">
+       <div class="container" id="abc">
+
+
         <div class="one">
           <h2>{{msg}}</h2>
           <h2><v-fenlei></v-fenlei></h2>
@@ -18,7 +20,8 @@
            </router-link>
          </el-col>
        </el-row>
-   </div>
+    </div>
+
   </div>
   </div>
 </template>
@@ -67,9 +70,6 @@
 </script>
 
 <style>
-  .personalized{
-    min-height: 500px;
-  }
 	.one{
 		display:flex;
 		width:100%;
@@ -78,5 +78,10 @@
 		padding-bottom: -20px;
 		margin-bottom:30px;
 	}
+ .el-col-4 {
+      width: 16.66667%;
+    height:204px;
+    }
+   
 
 </style>

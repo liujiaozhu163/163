@@ -1,74 +1,68 @@
 <template>
 
-  <div class="Album"  v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+  <div class="Album1">
 
-   <div class="container">
+   
 
-        <h2>{{msg}}<hr></h2>
-
-       <el-row :gutter="20">
+        <h2>{{msg1}}<hr></h2>
+    
+      <el-row :gutter="20">
          <el-col :span="4" v-for="(items,index) in playLists" :key="index">
 
            <router-link :to="{name:'detail2',params:{id:items.id}}">
-             <el-image :src="items.blurPicUrl"></el-image>
+             <el-image :src="items.picUrl"></el-image>
              <p class="text-center">
                {{items.name.substring(0,10)}}
              </p>
            </router-link>
-
-         </el-col>
+		  
+         </el-col>   
        </el-row>
-	    <v-album1></v-album1>
-	    </div>
- </div>
+	  
+
+  </div>
 </template>
 
 <script>
-   import Album1 from '@/components/album/Album1.vue'
+	
   export default{
-    name:'album',
-	components:{
-	'v-album1':Album1
-	},
+    name:'album1',
     data(){
       return{
-        msg:'热门新碟',
-		// msg1:'全部新碟',
-        playLists:[],
-        loading:true
+		msg1:'全部新碟',
+        playLists:[]
       }
     },
     methods:{
-      getAlbum(){
-        this.$http.get('/top/album',{
+      getAlbum1(){
+			this.$http.get('/top/album',{
           params:{
             before:new Date().getTime(),
-            limit:12
+             limit:30
           }
         }).then(data=>{
           console.log(data);
 
          this.playLists = data.data.albums;
-         this.loading=false
         }).catch(e=>{
           console.log("新碟获取失败");
         });
       }
     },
     mounted() {
-      this.getAlbum();
+      this.getAlbum1();
     }
   }
 </script>
 
 <style>
 
-  .container{
-    width: 80%;
-    margin: auto;
+   .container{
+     width: 80%;
+     margin: auto;
   }
-
+ 
   .text-center{
-    text-align: center;
+     text-align: center;
   }
 </style>

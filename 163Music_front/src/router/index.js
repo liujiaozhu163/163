@@ -18,6 +18,8 @@ import Singer from'@/components/artist/Singer'
 import Mvs from'@/components/artist/Mvs'
 import Detail from '@/components/personalized/Detail'
 
+import Detail2 from '@/components/album/Detail2'
+
 Vue.use(Router)
 
 export default new Router({
@@ -91,6 +93,11 @@ export default new Router({
     	path:'/detail/:id',
     	name:'detail',
     	component: Detail
-    }
+    },
+	{
+				path:'/detail2/:id',
+				name:'detail2',
+				component:Detail2
+			}
   ]
 })

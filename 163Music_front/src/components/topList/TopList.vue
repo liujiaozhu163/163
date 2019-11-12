@@ -1,8 +1,8 @@
 <template>
-  
+
   <div  v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.8)">
-    
-  
+
+
   <div class="ranking container">
     <el-row :gutter="100" class='bor'>
       <el-col :span="7" class="left">
@@ -31,7 +31,7 @@
       <el-col :span="17" class="right">
         <el-row :gutter="40">
           <el-col :span="6">
-           <el-image :src="coverImgUrl" style="border:1px solid #292929;padding: 5px;"></el-image>
+           <el-image :src="coverImgUrl"  class="rimg"></el-image>
           </el-col>
           <el-col :span="18">
             <h3>{{sname}}</h3>

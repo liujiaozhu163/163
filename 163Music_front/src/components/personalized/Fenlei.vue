@@ -1,6 +1,4 @@
-
 <template>
-
 	<div class="fenlei">
 		<el-select v-model="value" placeholder="选择分类">
 			   <el-option
