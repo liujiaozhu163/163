@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import Login from '@/components/Login/Login.vue'
+    import Login from '@/components/login/Login.vue'
 	export default{
 	  name:'nav1',
 	  data(){
